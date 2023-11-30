@@ -18,7 +18,7 @@ Resources:
     Properties:
       ImageId: ami-06d4b7182ac3480fa # ImageID valid only in us-east-1 region
       InstanceType: t2.micro
-      KeyName: my-firstvm # <-- Change to use your key-pair name
+      KeyName: my-firstvm # <- Change to use your key-pair name
       SecurityGroupIds:
         - !Ref WebAppSecurityGroup
 
