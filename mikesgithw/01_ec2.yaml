@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Part 1 - Build a webapp stack with CloudFormation
+
+Resources: # Resource code block, this is where we define our application
+  WebAppInstance: # Name of instance
+    Type: AWS::EC2::Instance # Cloud provider and type of service 
+    Properties: # Defining properties of EC2 Instance 
+      ImageId: ami-048e636f368eb3006 # Selects the operating system to use for the EC2
+      InstanceType: t2.micro # Type of Instance 
+      KeyName: mikeswebserver # Recognizes Key pair to ssh into machine 
+      SecurityGroupIds: # Defines security group for instance
+        - !Ref WebAppSecurityGroup # References code from WebappSecurityGroup
+
+  WebAppSecurityGroup: # Name of security group 
+    Type: AWS::EC2::SecurityGroup # Cloud provider and type of security group 
+    Properties: # Defines properties of security group
+      GroupName: webapp-security-group # Defines Group Name  
+      GroupDescription: "Allow HTTP/HTTPS and SSH inbound and outbound traffic" # Defines description of Inbound and Outbound traffic 
+      SecurityGroupIngress: # Inbound Traffic Rules
+        - IpProtocol: tcp 
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
