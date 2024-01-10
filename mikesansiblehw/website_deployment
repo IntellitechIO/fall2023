@@ -1,0 +1,7 @@
+---
+
+ - name: Creating a file with content
+   copy:
+     dest: /home/ubuntu/index.html
+     content: |
+       This was created using ansible

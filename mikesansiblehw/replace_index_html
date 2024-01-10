@@ -1,0 +1,7 @@
+---
+
+- name: this will replace the index.html file
+  copy:
+    src: /home/ubuntu/index.html
+    dest: /var/www/html/index.html
+    remote_src: yes
